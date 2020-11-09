@@ -9,9 +9,15 @@ def ingredient_input():
     
     while ingredient != '':
         
+        ingredient = ingredient.lower()
+        ingredient = ingredient.strip()
+
         if ingredient.replace(' ', '').isalpha():
-            ingredients.append(ingredient)
-            ingredient = input('\nIngredient (enter to confirm): ')
+            if ingredient in unique_ingredients():
+                ingredients.append(ingredient)
+                ingredient = input('\nIngredient (enter to confirm): ')
+            else: 
+                print("\nSorry, the ingredient you typed in isn't recognized by our app.")
         else:
             print("\nWe are sorry but your input was invalid, please only type characters.")
             ingredient = input('\nIngredient (enter to confirm): ')
@@ -27,13 +33,13 @@ def clean_input(ingredient_list):
     return ing_lower_ws
 
 
-def calculate_similarity(recipe, ingridient_list):
+def calculate_similarity(recipe, ingredient_list):
 
     score = 0
-    total = len(recipe.ingridients)
+    total = len(recipe.ingredients)
 
     for i in ingridient_list:
-        if i in recipe.ingridients:
+        if i in recipe.ingredients:
             score += 1
 
     sim_score = 100*score/total
@@ -72,3 +78,15 @@ def user_choice():
 def missing():
     
     return None
+
+
+def unique_ingredients():
+
+    ingredient_list = []
+
+    for Recipe in RECIPES:
+        for ingredient in Recipe.ingredients:
+            if ingredient not in ingredient_list:
+                ingredient_list.append(ingredient)
+    
+    return ingredient_list
