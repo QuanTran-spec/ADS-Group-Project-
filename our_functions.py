@@ -13,7 +13,7 @@ def ingredient_input():
         ingredient = ingredient.strip()
 
         if ingredient.replace(' ', '').isalpha():
-            if ingredient in unique_ingredients():
+            if ingredient in unique_ingredients(RECIPES):
                 ingredients.append(ingredient)
                 ingredient = input('\nIngredient (enter to confirm): ')
             else: 
@@ -25,20 +25,12 @@ def ingredient_input():
     return ingredients
 
 
-def clean_input(ingredient_list):
-
-    ing_lower = [x.lower() for x in ingredient_list]
-    ing_lower_ws = [x.strip() for x in ing_lower]
-
-    return ing_lower_ws
-
-
 def calculate_similarity(recipe, ingredient_list):
 
     score = 0
     total = len(recipe.ingredients)
 
-    for i in ingridient_list:
+    for i in ingredient_list:
         if i in recipe.ingredients:
             score += 1
 
@@ -58,16 +50,21 @@ def binary_search_tree(ingredient_list):
     return bst
 
 
-def io_traverse(current_node):
+def io_traverse(current_node, recommendations):
 
         if current_node.rightChild:
-            io_traverse(current_node.rightChild)
+            io_traverse(current_node.rightChild, recommendations)
 
         if current_node.similarity > 0:
-            print('\n   ', current_node.name, '\n       -', current_node.similarity, '% match \n        -', current_node.yt_link)   
+            recommendations.append(current_node)
 
         if current_node.leftChild:
-            io_traverse(current_node.leftChild)
+            io_traverse(current_node.leftChild, recommendations)
+
+
+def display_recommendations(recommendations):
+    for recipe in recommendations:
+        print('\n   ', recipe.name, '\n       -', recipe.similarity, '% match \n        -', recipe.yt_link)
 
 
 def user_choice():
@@ -80,12 +77,12 @@ def missing():
     return None
 
 
-def unique_ingredients():
+def unique_ingredients(RECIPES):
 
     ingredient_list = []
 
-    for Recipe in RECIPES:
-        for ingredient in Recipe.ingredients:
+    for recipe in RECIPES:
+        for ingredient in recipe.ingredients:
             if ingredient not in ingredient_list:
                 ingredient_list.append(ingredient)
     

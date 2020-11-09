@@ -8,14 +8,15 @@ def main():
     print('\n-------------------- Welcome to Shoptimize! --------------------')
     print('\nTo start please tell us which ingridients you would like to\nmake use of. Once finished, simply leave the ingridient field\nblank and press enter to continue.\n')
 
-    raw_input = ingredient_input()
-    ingredient_list = clean_input(raw_input)
+    ingredient_list = ingredient_input()
 
     bst = binary_search_tree(ingredient_list)
 
     print('\nThe following recipes are recommended based on your preference:')
 
-    io_traverse(bst.root)
+    recommendations = []
+    io_traverse(bst.root, recommendations)
+    display_recommendations(recommendations)
 
     print('\n--------------- Thank you for using Shoptimize! ---------------\n')
 

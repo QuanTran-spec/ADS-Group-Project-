@@ -1,9 +1,9 @@
 
 
 class Recipe:
-    def __init__(self, name, ingridients, yt_link):
+    def __init__(self, name, ingredients, yt_link):
         self.name = name
-        self.ingridients = ingridients
+        self.ingredients = ingredients
         self.yt_link = yt_link 
         self.similarity = 0
         self.leftChild = None
