@@ -5,7 +5,7 @@ from recipes import RECIPES
 def ingredient_input():
 
     ingredients = []
-    ingredient = input('Ingredient (enter to confirm): ')
+    ingredient = input('Ingredient: ')
     
     while ingredient != '':
         
@@ -13,14 +13,19 @@ def ingredient_input():
         ingredient = ingredient.strip()
 
         if ingredient.replace(' ', '').isalpha():
+            if ingredient == 'show available':
+                print(unique_ingredients(RECIPES))
+                ingredient = input('\nIngredient: ')
+
             if ingredient in unique_ingredients(RECIPES):
                 ingredients.append(ingredient)
-                ingredient = input('\nIngredient (enter to confirm): ')
+                ingredient = input('\nIngredient: ')
             else: 
-                print("\nSorry, the ingredient you typed in isn't recognized by our app.")
+                print("\nSorry, the ingredient you typed is not yet in our database.")
+                ingredient = input('\nIngredient: ')
         else:
             print("\nWe are sorry but your input was invalid, please only type characters.")
-            ingredient = input('\nIngredient (enter to confirm): ')
+            ingredient = input('\nIngredient: ')
 
     return ingredients
 
@@ -63,27 +68,48 @@ def io_traverse(current_node, recommendations):
 
 
 def display_recommendations(recommendations):
+    num = 0
     for recipe in recommendations:
-        print('\n   ', recipe.name, '\n       -', recipe.similarity, '% match \n        -', recipe.yt_link)
+        num += 1
+        print('\n   ', str(num) + ')', recipe.name, '\n       -', str(round(recipe.similarity)) + '% match \n        -', recipe.yt_link)
 
 
-def user_choice():
+def user_choice(recommendations):
 
-    return None
+    while True:
+        try:
+            choice = int(input('Please select a receipe by writing its respective number: '))
+            
+            if 0 < choice <= len(recommendations):
+                break
 
+            else:
+                print('\nSorry, your selection was out of range.\n')
 
-def missing():
+        except ValueError:
+            print('\nPlease only write a number to select a recipe.\n')
     
-    return None
+    return choice
+
+
+def missing(choice, recommendations, ingredient_list):
+    
+    missing_ingredients = []
+
+    for i in recommendations[choice-1].ingredients:
+        if i not in ingredient_list:
+            missing_ingredients.append(i)
+
+    return missing_ingredients
 
 
 def unique_ingredients(RECIPES):
 
-    ingredient_list = []
+    all_ingredients = []
 
     for recipe in RECIPES:
         for ingredient in recipe.ingredients:
-            if ingredient not in ingredient_list:
-                ingredient_list.append(ingredient)
+            if ingredient not in all_ingredients:
+                all_ingredients.append(ingredient)
     
-    return ingredient_list
+    return all_ingredients
