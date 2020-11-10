@@ -19,5 +19,10 @@ ChiliConCarne = Recipe(
     'https://www.youtube.com/watch?v=-1iOeqAywNk'
 )
 
+Bolognese = Recipe(
+    "Spaghetti alla Bolognese",
+    ['pasta','tomato sauce','carrots','onion','celery','minced meat'],
+    'https://www.youtube.com/watch?v=oqeMHDnL3hM'
+)
 
-RECIPES = [Carbonara, Amatriciana, ChiliConCarne]
+RECIPES = [Carbonara, Amatriciana, ChiliConCarne, Bolognese]
