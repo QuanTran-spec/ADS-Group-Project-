@@ -5,6 +5,7 @@ from recipes import RECIPES
 def ingredient_input():
 
     ingredients = []
+    ingredients_mentioned = []
     ingredient = input('Ingredient: ')
     
     while ingredient != '':
@@ -12,20 +13,25 @@ def ingredient_input():
         ingredient = ingredient.lower()
         ingredient = ingredient.strip()
 
-        if ingredient.replace(' ', '').isalpha():
-            if ingredient == 'show available':
-                print(unique_ingredients(RECIPES))
-                ingredient = input('\nIngredient: ')
+        if ingredient not in ingredients_mentioned:
+            ingredients_mentioned.append(ingredient)
+            if ingredient.replace(' ', '').isalpha():
+                if ingredient == 'show available':
+                    print(unique_ingredients(RECIPES))
+                    ingredient = input('\nIngredient: ')
 
-            if ingredient in unique_ingredients(RECIPES):
-                ingredients.append(ingredient)
-                ingredient = input('\nIngredient: ')
-            else: 
-                print("\nSorry, the ingredient you typed is not yet in our database.")
+                if ingredient in unique_ingredients(RECIPES):
+                    ingredients.append(ingredient)
+                    ingredient = input('\nIngredient: ')
+                else:
+                    print("\nSorry, the ingredient you typed is not yet in our database.")
+                    ingredient = input('\nIngredient: ')
+            else:
+                print("\nWe are sorry but your input was invalid, please only type characters.")
                 ingredient = input('\nIngredient: ')
         else:
-            print("\nWe are sorry but your input was invalid, please only type characters.")
             ingredient = input('\nIngredient: ')
+            continue
 
     return ingredients
 
@@ -113,3 +119,7 @@ def unique_ingredients(RECIPES):
                 all_ingredients.append(ingredient)
     
     return all_ingredients
+
+
+
+
