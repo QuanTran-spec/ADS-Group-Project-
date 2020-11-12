@@ -31,7 +31,6 @@ def ingredient_input():
                 ingredient = input('\nIngredient: ')
         else:
             ingredient = input('\nIngredient: ')
-            continue
 
     return ingredients
 

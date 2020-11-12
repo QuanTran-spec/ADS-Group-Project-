@@ -89,8 +89,7 @@ BananaBread = Recipe(
     "Banana Bread",
     ['flour','sugar','milk', 'bananas', 'baking powder', 'oil', 'egg', 'baking soda'],
     'https://www.youtube.com/watch?v=vPUuY-bEK2w'
-   
+)
 
 RECIPES = [Carbonara, Amatriciana, ChiliConCarne, Bolognese, Arrabbiata, Puttanesca, Lasagna, Margherita, ProscittoeFunghi, Cotoletta, 
            AvocadoToast, VeganBananaOatmeal, GrilledCheese, BreakfastBurrito, BananaBread]
-
