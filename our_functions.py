@@ -15,6 +15,7 @@ def ingredient_input():
 
         if ingredient not in ingredients_mentioned:
             ingredients_mentioned.append(ingredient)
+            
             if ingredient.replace(' ', '').isalpha():
                 if ingredient == 'show available':
                     print(unique_ingredients(RECIPES))
