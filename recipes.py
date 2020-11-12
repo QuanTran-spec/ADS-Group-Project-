@@ -61,6 +61,11 @@ Cotoletta = Recipe(
     'https://www.youtube.com/watch?v=VswLX38iHJo'
 )
 
+AvocadoToast = Recipe(
+    "Avocado Toast",
+    ['bread','avocados','salt','pepper'],
+    'https://www.youtube.com/watch?v=TvwtN-3DvZY'
+)   
 
-RECIPES = [Carbonara, Amatriciana, ChiliConCarne, Bolognese, Arrabbiata, Puttanesca, Lasagna, Margherita, ProscittoeFunghi, Cotoletta]
+RECIPES = [Carbonara, Amatriciana, ChiliConCarne, Bolognese, Arrabbiata, Puttanesca, Lasagna, Margherita, ProscittoeFunghi, Cotoletta, AvocadoToast]
 
