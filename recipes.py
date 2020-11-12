@@ -67,5 +67,30 @@ AvocadoToast = Recipe(
     'https://www.youtube.com/watch?v=TvwtN-3DvZY'
 )   
 
-RECIPES = [Carbonara, Amatriciana, ChiliConCarne, Bolognese, Arrabbiata, Puttanesca, Lasagna, Margherita, ProscittoeFunghi, Cotoletta, AvocadoToast]
+VeganBananaOatmeal = Recipe(
+    "Vegan Banana Oatmeal",
+    ['oats','banana','brown sugar','plant milk'],
+    'https://www.youtube.com/watch?v=OTwHo4pO4DU'
+)   
+
+GrilledCheese = Recipe(
+    "Grilled Cheese Sandwich",
+    ['bread','cheese','salt'],
+    'https://www.youtube.com/watch?v=8E4cQHejFq0'
+)   
+
+BreakfastBurrito = Recipe(
+    "Breakfast Burrito",
+    ['tortilla','cheese','eggs', 'potatoes', 'salt', 'avocados', 'onion', 'olive oil'],
+    'https://www.youtube.com/watch?v=KvZl4i91jtU'
+)   
+
+BananaBread = Recipe(
+    "Banana Bread",
+    ['flour','sugar','milk', 'bananas', 'baking powder', 'oil', 'egg', 'baking soda'],
+    'https://www.youtube.com/watch?v=vPUuY-bEK2w'
+   
+
+RECIPES = [Carbonara, Amatriciana, ChiliConCarne, Bolognese, Arrabbiata, Puttanesca, Lasagna, Margherita, ProscittoeFunghi, Cotoletta, 
+           AvocadoToast, VeganBananaOatmeal, GrilledCheese, BreakfastBurrito, BananaBread]
 
