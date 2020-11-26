@@ -4,6 +4,7 @@ Shoptimize is a python program that takes ingredients and returns appropriate re
 
 ## Installation
 Install [python 3](https://www.python.org/downloads/) and make sure the downloaded .py files are in the same directory.
+Also make sure python is your default program for running .py files
 
 ## Usage
 1.  Open the downloaded directory in your folders 
